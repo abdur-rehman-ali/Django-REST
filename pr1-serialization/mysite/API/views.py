@@ -17,9 +17,10 @@ def studentAPI(request):
     #python dictionery of data
     print(serializer.data)
     #json format of data
-    json = JSONRenderer().render(serializer.data)
-    print(json)
-    return HttpResponse(json, content_type="application/json")
+    # json = JSONRenderer().render(serializer.data)
+    # print(json)
+    # return HttpResponse(json, content_type="application/json")
+    return JsonResponse(data=serializer.data)
 
 #Return queryset     
 def studentAPIList(request):
@@ -35,4 +36,5 @@ def studentAPIList(request):
     # json = JSONRenderer().render(serializer.data)
     # print(json)
     # return HttpResponse(json, content_type="application/json")
+    #Here we set safe = False because our data is not off dict type
     return JsonResponse(serializer.data,safe=False)
